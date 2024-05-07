@@ -28,7 +28,7 @@ def get_table_data(quiz_str):
         quiz_dict=json.loads()
         quiz_table_data=[]
 
-        for key,value in jsontodict.items():
+        for key,value in quiz_dict.items():
             mcq=value['mcq']
             options=' | '.join([
             f'{option.upper()}: {option_value}' for option,option_value in value['options'].items()])
@@ -36,7 +36,7 @@ def get_table_data(quiz_str):
             quiz_table_data.append({'MCQ':mcq,'Choices':options,'Correct':correct})
         return quiz_table_data
     except Exception as e:
-        traceback.print_exception(type(e),e,__traceback__)
+        traceback.print_exception(type(e),e.__traceback__)
         return False
 
 
