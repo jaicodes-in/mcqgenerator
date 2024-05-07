@@ -1,4 +1,6 @@
-import os,json,traceback
+import os
+import json
+import traceback
 import pandas as pd
 from dotenv import load_dotenv
 from src.mcqgenerator.utils import read_file,get_table_data
@@ -52,8 +54,7 @@ quiz_evaluation_prompt=PromptTemplate(input_variables=['quiz','subject'],templat
 
 review_chain=LLMChain(llm=llm_groq,prompt=quiz_evaluation_prompt,output_key='review',verbose=True)
 
-generate_evaluate_chain=SequentialChain(chains=['quiz_chain','review_chain'],
-input_variables=['text','number','subject','tone','response_json'],output_key=['quiz','review'],verbose=True)
+generate_evaluate_chain=SequentialChain(chains=['quiz_chain','review_chain'],input_variables=['text','number','subject','tone','response_json'],output_key=['quiz','review'],verbose=True)
 
 
 

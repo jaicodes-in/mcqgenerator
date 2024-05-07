@@ -39,13 +39,13 @@ with st.form("user_inputs"):
 
                 with get_openai_callback() as cb:
 
-                    response=generate_evaluate_chain(
+                    response=generate_evaluate_chain.invoke(
                         {
                             'text':text,
                             'number':mcq_count,
                             'subject':subject,
                             'tone':tone,
-                            'response.json':json.dumps(RESPONSE_JSON)
+                            'response_json':json.dumps(RESPONSE_JSON)
                         }
 
                     )
